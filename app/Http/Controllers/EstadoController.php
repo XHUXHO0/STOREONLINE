@@ -12,7 +12,7 @@ class EstadoController extends Controller
      */
     public function index()
     {
-        //
+        return view('Estados.Index');
     }
 
     /**
@@ -20,7 +20,7 @@ class EstadoController extends Controller
      */
     public function create()
     {
-        //
+        return view('Estados.Create');
     }
 
     /**
@@ -28,7 +28,10 @@ class EstadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Estado();
+        $categoria->create($request->input());
+
+        return redirect()->route('estados.index');
     }
 
     /**
@@ -36,7 +39,7 @@ class EstadoController extends Controller
      */
     public function show(Estado $estado)
     {
-        //
+        return view('Estados.Show', ['estado' => $estado]);
     }
 
     /**
@@ -44,15 +47,18 @@ class EstadoController extends Controller
      */
     public function edit(Estado $estado)
     {
-        //
+        return view('Estados.Edit', ['estado' => $estado]);
     }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Estado $estado)
     {
-        //
+        $estado->update($request->input());
+
+        return redirect()->route('estados.index');
     }
 
     /**
@@ -60,6 +66,8 @@ class EstadoController extends Controller
      */
     public function destroy(Estado $estado)
     {
-        //
+        $estado->delete();
+
+        return redirect()->route('estados.index');
     }
 }

@@ -24,10 +24,9 @@ class EstadosDatatable extends DataTableComponent
                 ->sortable(),
             Column::make("Descripcion", "descripcion")
                 ->sortable(),
-            Column::make("Created at", "created_at")
-                ->sortable(),
-            Column::make("Updated at", "updated_at")
-                ->sortable(),
+            Column::make('Acciones ', 'id')->format(function ($row) {
+                    return view('Estados.BotonesTabla', ['id' => $row]);
+                }),
         ];
     }
 }
