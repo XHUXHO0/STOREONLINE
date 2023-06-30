@@ -12,8 +12,8 @@ return new class() extends Migration {
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->nullable();
             $table->string('marca')->nullable();
+            $table->string('titulo')->nullable();
             $table->integer('stock')->nullable();
             $table->unsignedBigInteger('id_estado')->nullable();
             $table->foreign('id_estado')->on('estados')->references('id');

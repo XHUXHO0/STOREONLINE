@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Estado;
+use App\Models\Categoria;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Producto extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nombre',
         'marca',
+        'titulo',
         'stock',
         'activo',
         'id_estado',
@@ -23,4 +25,14 @@ class Producto extends Model
         'tipo_de_meditas',
         'id_categoria',
     ];
+
+    public function categoria()
+    {
+        return $this->hasOne(Categoria::class, 'id', 'id_categoria');
+    }
+
+    public function estado()
+    {
+        return $this->hasOne(Estado::class, 'id', 'id_estado');
+    }
 }

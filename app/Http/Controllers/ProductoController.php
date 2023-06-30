@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Categoria;
+use App\Models\Estado;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -12,15 +14,19 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        return view('Productos.Index');
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        $categorias = Categoria::all();
+        $estados = Estado::all();
+
+        return view('Productos.Create', [ 'categorias' => $categorias,'estados' => $estados]);
     }
 
     /**
@@ -28,7 +34,10 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $producto = new Producto();
+        $producto->create($request->input());
+
+        return redirect()->route('productos.index');
     }
 
     /**
@@ -36,7 +45,9 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
-        //
+        $categorias = Categoria::all();
+        $estados = Estado::all();
+        return view('Productos.Show', ['producto' => $producto, 'categorias' => $categorias,'estados' => $estados]);
     }
 
     /**
@@ -44,7 +55,9 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-        //
+        $categorias = Categoria::all();
+        $estados = Estado::all();
+        return view('Productos.Edit', ['producto' => $producto, 'categorias' => $categorias,'estados' => $estados]);
     }
 
     /**
@@ -52,7 +65,9 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        //
+        $producto->update($request->all());
+        $producto->save();
+        return redirect()->route('productos.index');
     }
 
     /**
@@ -60,6 +75,12 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        $producto->delete();
+
+        return redirect()->route('productos.index');
+    }
+
+    public function codigobarras(Producto $producto){
+
     }
 }
