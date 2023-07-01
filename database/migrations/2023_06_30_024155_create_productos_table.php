@@ -25,6 +25,9 @@ return new class() extends Migration {
             $table->string('tamaño_o_tipo')->nullable();
             $table->string('fecha_de_expiracion')->nullable();
             $table->string('tipo_de_meditas')->nullable();
+            $table->string('uri_foto')->nullable();
+            $table->unsignedBigInteger('id_sucursal')->nullable();
+            $table->foreign('id_sucursal')->on('sucursals')->references('id');
             $table->unsignedBigInteger('id_categoria')->nullable();
             $table->foreign('id_categoria')->on('categorias')->references('id');
             $table->timestamps();

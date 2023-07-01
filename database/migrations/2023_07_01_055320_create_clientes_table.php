@@ -10,10 +10,14 @@ return new class() extends Migration {
      */
     public function up(): void
     {
-        Schema::create('categorias', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->nullable();
-            $table->string('descripcion')->nullable();
+            $table->string('apellidos')->nullable();
+            $table->string('direccion')->nullable();
+            $table->string('numero_telefonico')->nullable();
+            $table->string('email')->nullable();
+            $table->string('uri_foto')->nullable();
             $table->unsignedBigInteger('id_sucursal')->nullable();
             $table->foreign('id_sucursal')->on('sucursals')->references('id');
             $table->timestamps();
@@ -25,6 +29,6 @@ return new class() extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('categorias');
+        Schema::dropIfExists('clientes');
     }
 };

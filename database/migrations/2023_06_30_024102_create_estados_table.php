@@ -14,6 +14,8 @@ return new class() extends Migration {
             $table->id();
             $table->string('nombre')->nullable();
             $table->string('descripcion')->nullable();
+            $table->unsignedBigInteger('id_sucursal')->nullable();
+            $table->foreign('id_sucursal')->on('sucursals')->references('id');
             $table->timestamps();
         });
     }
