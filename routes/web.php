@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpresaController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\GastoController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\SucursalController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VentaController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,11 +27,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])->group(function () {
+    
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -95,9 +94,23 @@ Route::middleware([
 
     Route::get('/ventas', [VentaController::class, 'index'])->name('ventas.index');
     Route::get('/ventas/{venta}/show', [VentaController::class, 'show'])->name('ventas.show');
-    Route::get('/ventas/create', [VentaController::class, 'create'])->name('ventas.create');
-    Route::post('/ventas/store', [VentaController::class, 'store'])->name('ventas.store');
     Route::get('/ventas/{venta}/edit', [VentaController::class, 'edit'])->name('ventas.edit');
     Route::put('/ventas/{venta}/update', [VentaController::class, 'update'])->name('ventas.update');
     Route::delete('/ventas/{venta}/delete', [VentaController::class, 'destroy'])->name('ventas.destroy');
+
+    Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
+    Route::get('/usuarios/{usuario}/show', [UserController::class, 'show'])->name('usuarios.show');
+    Route::get('/usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
+    Route::post('/usuarios/store', [UserController::class, 'store'])->name('usuarios.store');
+    Route::get('/usuarios/{usuario}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
+    Route::put('/usuarios/{usuario}/update', [UserController::class, 'update'])->name('usuarios.update');
+    Route::delete('/usuarios/{usuario}/delete', [UserController::class, 'destroy'])->name('usuarios.destroy');
+
+    Route::get('/carritos', [CarritoController::class, 'index'])->name('carritos.index');
+    Route::get('/carritos/{carrito}/show', [CarritoController::class, 'show'])->name('carritos.show');
+    Route::get('/carritos/create', [CarritoController::class, 'create'])->name('carritos.create');
+    Route::post('/carritos/store', [CarritoController::class, 'store'])->name('carritos.store');
+    Route::get('/carritos/{carrito}/edit', [CarritoController::class, 'edit'])->name('carritos.edit');
+    Route::put('/carritos/{carrito}/update', [CarritoController::class, 'update'])->name('carritos.update');
+    Route::delete('/carritos/{carrito}/delete', [CarritoController::class, 'destroy'])->name('carritos.destroy');
 });
