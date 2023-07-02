@@ -5,6 +5,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\SucursalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,5 +72,14 @@ Route::middleware([
     Route::get('/empresas/{empresa}/edit', [EmpresaController::class, 'edit'])->name('empresas.edit');
     Route::put('/empresas/{empresa}/update', [EmpresaController::class, 'update'])->name('empresas.update');
     Route::delete('/empresas/{empresa}/delete', [EmpresaController::class, 'destroy'])->name('empresas.destroy');
+
+
+    Route::get('/sucursales', [SucursalController::class, 'index'])->name('sucursales.index');
+    Route::get('/sucursales/{sucursal}/show', [SucursalController::class, 'show'])->name('sucursales.show');
+    Route::get('/sucursales/create', [SucursalController::class, 'create'])->name('sucursales.create');
+    Route::post('/sucursales/store', [SucursalController::class, 'store'])->name('sucursales.store');
+    Route::get('/sucursales/{sucursal}/edit', [SucursalController::class, 'edit'])->name('sucursales.edit');
+    Route::put('/sucursales/{sucursal}/update', [SucursalController::class, 'update'])->name('sucursales.update');
+    Route::delete('/sucursales/{sucursal}/delete', [SucursalController::class, 'destroy'])->name('sucursales.destroy');
 
 });

@@ -1,5 +1,8 @@
 <x-app-layout>
     <div class="w-3/4 mx-auto my-6">
+        <h1>Ver Categorias</h1>
+    </div>
+    <div class="w-3/4 mx-auto my-6">
         <div class="bg-white p-10">
            
             @include('Categorias.partials.form')

@@ -1,5 +1,8 @@
 <x-app-layout>
     <div class="w-3/4 mx-auto my-6">
+        <h1>Ver Productos</h1>
+    </div>
+    <div class="w-3/4 mx-auto my-6">
         <div class="bg-white p-10">
             <div class="w-full justify-center items-center flex">
                 <img src="{{ $producto->uri_foto }}" alt="{{ $producto->uri_foto }}" class="w-96">

@@ -1,5 +1,8 @@
 <x-app-layout>
     <div class="w-3/4 mx-auto my-6">
+        <h1>Editar Productos</h1>
+    </div>
+    <div class="w-3/4 mx-auto my-6">
         <div class="bg-white p-10">
             <form action="{{ route('productos.update',$producto->id) }}" method="post">
                 @csrf

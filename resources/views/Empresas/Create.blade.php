@@ -1,5 +1,8 @@
 <x-app-layout>
     <div class="w-3/4 mx-auto my-6">
+        <h1>Crear Empresas</h1>
+    </div>
+    <div class="w-3/4 mx-auto my-6">
         <div class="p-10 bg-white">
             <form action="{{ route('empresas.store') }}" method="post">
                 @csrf
