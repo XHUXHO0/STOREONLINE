@@ -11,6 +11,8 @@ class Producto extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'id_user',
+        'uri_foto',
         'marca',
         'titulo',
         'stock',

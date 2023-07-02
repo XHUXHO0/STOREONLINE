@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Tablas;
 use App\Models\Producto;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
 
 class ProductosDatatable extends DataTableComponent
@@ -21,7 +22,17 @@ class ProductosDatatable extends DataTableComponent
         return [
             Column::make("Id", "id")
             ->sortable(),
+            ImageColumn::make('Foto Cliente')
+            ->location(
+                fn ($row) => $row->uri_foto
+            )
+            ->attributes(fn ($row) => [
+                'class' => 'rounded-full w-20 h-20',
+                'alt' => $row->nombre.' Avatar',
+            ]),
             Column::make("Categoria", "categoria.nombre")
+                ->sortable(),
+            Column::make("Direccion foto", "uri_foto")
                 ->sortable(),
             Column::make("Marca", "marca")
                 ->sortable(),

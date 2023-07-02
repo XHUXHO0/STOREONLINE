@@ -12,6 +12,9 @@ return new class() extends Migration {
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_user')->unsigned()->nullable();
+            $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade');
+            $table->string('uri_foto')->nullable();
             $table->string('marca')->nullable();
             $table->string('titulo')->nullable();
             $table->integer('stock')->nullable();
@@ -25,7 +28,6 @@ return new class() extends Migration {
             $table->string('tamaño_o_tipo')->nullable();
             $table->string('fecha_de_expiracion')->nullable();
             $table->string('tipo_de_meditas')->nullable();
-            $table->string('uri_foto')->nullable();
             $table->unsignedBigInteger('id_sucursal')->nullable();
             $table->foreign('id_sucursal')->on('sucursals')->references('id');
             $table->unsignedBigInteger('id_categoria')->nullable();

@@ -12,7 +12,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        return view('Clientes.Index');
     }
 
     /**
@@ -20,7 +20,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('Clientes.Create');
     }
 
     /**
@@ -28,15 +28,18 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente = new Cliente();
+        $cliente->create($request->input());
+
+        return redirect()->route('clientes.index');
     }
 
     /**
      * Display the specified resource.
      */
     public function show(Cliente $cliente)
-    {
-        //
+    {//dd($cliente);
+        return view('Clientes.Show', ['cliente' => $cliente]);
     }
 
     /**
@@ -44,7 +47,7 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
+        return view('Clientes.Edit', ['cliente' => $cliente]);
     }
 
     /**
@@ -52,7 +55,10 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
-        //
+        $cliente->update($request->input());
+        $cliente->save();
+
+        return redirect()->route('clientes.index');
     }
 
     /**
@@ -60,6 +66,8 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->delete();
+
+        return redirect()->route('clientes.index');
     }
 }

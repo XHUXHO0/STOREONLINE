@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\CategoriaController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Route::get('/', function () {
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+    'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -44,6 +45,14 @@ Route::middleware([
     Route::get('/estados/{estado}/edit', [EstadoController::class, 'edit'])->name('estados.edit');
     Route::put('/estados/{estado}/update', [EstadoController::class, 'update'])->name('estados.update');
     Route::delete('/estados/{estado}/delete', [EstadoController::class, 'destroy'])->name('estados.destroy');
+
+    Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.index');
+    Route::get('/clientes/{cliente}/show', [ClienteController::class, 'show'])->name('clientes.show');
+    Route::get('/clientes/create', [ClienteController::class, 'create'])->name('clientes.create');
+    Route::post('/clientes/store', [ClienteController::class, 'store'])->name('clientes.store');
+    Route::get('/clientes/{cliente}/edit', [ClienteController::class, 'edit'])->name('clientes.edit');
+    Route::put('/clientes/{cliente}/update', [ClienteController::class, 'update'])->name('clientes.update');
+    Route::delete('/clientes/{cliente}/delete', [ClienteController::class, 'destroy'])->name('clientes.destroy');
 
     Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
     Route::get('/productos/{producto}/genere/barras', [ProductoController::class, 'codigobarras'])->name('productos.codigobarras');

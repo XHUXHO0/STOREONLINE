@@ -6,6 +6,7 @@ use App\Models\Producto;
 use App\Models\Categoria;
 use App\Models\Estado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductoController extends Controller
 {
@@ -35,6 +36,8 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $producto = new Producto();
+        $producto->id_sucursal = Auth::user()->id_sucursal;
+        $producto->id_user = Auth::user()->id;
         $producto->create($request->input());
 
         return redirect()->route('productos.index');
@@ -66,6 +69,8 @@ class ProductoController extends Controller
     public function update(Request $request, Producto $producto)
     {
         $producto->update($request->all());
+        $producto->id_user = Auth::user()->id;
+        $producto->id_sucursal = Auth::user()->id_sucursal;
         $producto->save();
         return redirect()->route('productos.index');
     }
