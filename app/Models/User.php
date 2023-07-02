@@ -26,6 +26,8 @@ class User extends Authenticatable
         'nombre',
         'apellido_paterno',
         'apellido_materno',
+        'id_empresa',
+        'id_sucursal',
         'email',
         'password',
     ];
@@ -59,4 +61,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function empresa()
+    {
+        return $this->hasOne(Empresa::class, 'id', 'id_empresa');
+    }
+
+    public function sucursal()
+    {
+        return $this->hasOne(sucursal::class, 'id', 'id_sucursal');
+    }
 }

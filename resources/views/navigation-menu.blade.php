@@ -2,14 +2,22 @@
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex">
+            <div class="flex items-center">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
                     <a href="{{ route('dashboard') }}">
                         <x-application-mark class="block w-auto h-9" />
                     </a>
                 </div>
+                <h4 class="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 uppercase">{{ Auth::user()->empresa->title }}</h4>
             </div>
+            <div class="flex">
+                <!-- Nombre -->
+                <div class="hidden md:flex items-center shrink-0">
+                    <h4 class="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 uppercase">{{ Auth::user()->nombre }}&nbsp;{{ Auth::user()->apellido_paterno }}&nbsp;{{ Auth::user()->apellido_materno }}</h4>
+                </div>
+            </div>
+
             <!-- Hamburger -->
             <div class="flex items-center -mr-2 lg:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400">
