@@ -4,41 +4,47 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex items-center shrink-0">
+                {{-- <div class="flex items-center shrink-0">
                     <a href="{{ route('dashboard') }}">
                         <x-application-mark class="block w-auto h-9" />
                     </a>
-                </div>
+                </div> --}}
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="#" :active="request()->routeIs('#')">
+                        <i class="fa-solid fa-cart-shopping"></i>&nbsp;{{ __('compras') }}
+                    </x-nav-link>
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        <i class="fa-solid fa-gauge"></i>&nbsp;{{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('empresas.index') }}" :active="request()->routeIs('empresas.index')">
-                        {{ __('Empresas') }}
+                        <i class="fa-solid fa-building"></i>&nbsp;{{ __('Empresas') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('sucursales.index') }}" :active="request()->routeIs('sucursales.index')">
-                        {{ __('Sucursales') }}
+                        <i class="fa-solid fa-house-flag"></i>&nbsp;{{ __('Sucursales') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('ventas.index') }}" :active="request()->routeIs('ventas.index')">
-                        {{ __('Ventas') }}
+                        <i class="fa-solid fa-money-bills"></i>&nbsp;{{ __('Ventas') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('categorias.index') }}" :active="request()->routeIs('categorias.index')">
-                        {{ __('Categorias') }}
+                        <i class="fa-solid fa-book-open"></i>&nbsp;{{ __('Categorias') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('estados.index') }}" :active="request()->routeIs('estados.index')">
-                        {{ __('Estados') }}
+                        <i class="fa-regular fa-circle-question"></i>&nbsp;{{ __('Estados') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('productos.index') }}" :active="request()->routeIs('productos.index')">
-                        {{ __('Productos') }}
+                        <i class="fa-solid fa-list-check"></i>&nbsp;{{ __('Productos') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('clientes.index') }}" :active="request()->routeIs('clientes.index')">
-                        {{ __('Clientes') }}
+                        <i class="fa-solid fa-id-card-clip"></i>&nbsp;{{ __('Clientes') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('gastos.index') }}" :active="request()->routeIs('gastos.index')">
-                        {{ __('Gastos') }}
+                        <i class="fa-solid fa-money-bill-1-wave"></i>&nbsp;{{ __('Gastos') }}
                     </x-nav-link>
+
+
+                    
                 </div>
             </div>
 
@@ -164,28 +170,34 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                <i class="fa-solid fa-cart-shopping"></i>&nbsp;{{ __('Carrito') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                <i class="fa-solid fa-gauge"></i>&nbsp;{{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('empresas.index') }}" :active="request()->routeIs('empresas.index')">
-                {{ __('Empresas') }}
+                <i class="fa-solid fa-building"></i>&nbsp;{{ __('Empresas') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('sucursales.index') }}" :active="request()->routeIs('sucursales.index')">
-                {{ __('Sucursales') }}
+                <i class="fa-solid fa-house-flag"></i>&nbsp;{{ __('Sucursales') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('ventas.index') }}" :active="request()->routeIs('ventas.index')">
+                <i class="fa-solid fa-money-bills"></i>&nbsp;{{ __('Ventas') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('categorias.index') }}" :active="request()->routeIs('categorias.index')">
-                {{ __('Categorias') }}
+                <i class="fa-solid fa-book-open"></i>&nbsp;{{ __('Categorias') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('estados.index') }}" :active="request()->routeIs('estados.index')">
-                {{ __('Estados') }}
+                <i class="fa-regular fa-circle-question"></i>&nbsp;{{ __('Estados') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('productos.index') }}" :active="request()->routeIs('productos.index')">
-                {{ __('Productos') }}
+                <i class="fa-solid fa-list-check"></i>&nbsp;{{ __('Productos') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('clientes.index') }}" :active="request()->routeIs('clientes.index')">
-                {{ __('Clientes') }}
+                <i class="fa-solid fa-id-card-clip"></i>&nbsp;{{ __('Clientes') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('empresas.index') }}" :active="request()->routeIs('empresas.index')">
-                {{ __('Ventas') }}
+            <x-responsive-nav-link href="{{ route('gastos.index') }}" :active="request()->routeIs('gastos.index')">
+                <i class="fa-solid fa-money-bill-1-wave"></i>&nbsp;{{ __('Gastos') }}
             </x-responsive-nav-link>
         </div>
 
