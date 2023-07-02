@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClienteController extends Controller
 {
@@ -29,6 +30,7 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $cliente = new Cliente();
+        $cliente->id_sucursal = Auth::user()->id_sucursal;
         $cliente->create($request->input());
 
         return redirect()->route('clientes.index');
@@ -56,6 +58,7 @@ class ClienteController extends Controller
     public function update(Request $request, Cliente $cliente)
     {
         $cliente->update($request->input());
+        $cliente->id_sucursal = Auth::user()->id_sucursal;
         $cliente->save();
 
         return redirect()->route('clientes.index');

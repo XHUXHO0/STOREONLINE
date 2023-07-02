@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
@@ -46,14 +47,6 @@ Route::middleware([
     Route::put('/estados/{estado}/update', [EstadoController::class, 'update'])->name('estados.update');
     Route::delete('/estados/{estado}/delete', [EstadoController::class, 'destroy'])->name('estados.destroy');
 
-    Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.index');
-    Route::get('/clientes/{cliente}/show', [ClienteController::class, 'show'])->name('clientes.show');
-    Route::get('/clientes/create', [ClienteController::class, 'create'])->name('clientes.create');
-    Route::post('/clientes/store', [ClienteController::class, 'store'])->name('clientes.store');
-    Route::get('/clientes/{cliente}/edit', [ClienteController::class, 'edit'])->name('clientes.edit');
-    Route::put('/clientes/{cliente}/update', [ClienteController::class, 'update'])->name('clientes.update');
-    Route::delete('/clientes/{cliente}/delete', [ClienteController::class, 'destroy'])->name('clientes.destroy');
-
     Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
     Route::get('/productos/{producto}/genere/barras', [ProductoController::class, 'codigobarras'])->name('productos.codigobarras');
     Route::get('/productos/{producto}/show', [ProductoController::class, 'show'])->name('productos.show');
@@ -62,4 +55,21 @@ Route::middleware([
     Route::get('/productos/{producto}/edit', [ProductoController::class, 'edit'])->name('productos.edit');
     Route::put('/productos/{producto}/update', [ProductoController::class, 'update'])->name('productos.update');
     Route::delete('/productos/{producto}/delete', [ProductoController::class, 'destroy'])->name('productos.destroy');
+
+    Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.index');
+    Route::get('/clientes/{cliente}/show', [ClienteController::class, 'show'])->name('clientes.show');
+    Route::get('/clientes/create', [ClienteController::class, 'create'])->name('clientes.create');
+    Route::post('/clientes/store', [ClienteController::class, 'store'])->name('clientes.store');
+    Route::get('/clientes/{cliente}/edit', [ClienteController::class, 'edit'])->name('clientes.edit');
+    Route::put('/clientes/{cliente}/update', [ClienteController::class, 'update'])->name('clientes.update');
+    Route::delete('/clientes/{cliente}/delete', [ClienteController::class, 'destroy'])->name('clientes.destroy');
+
+    Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas.index');
+    Route::get('/empresas/{empresa}/show', [EmpresaController::class, 'show'])->name('empresas.show');
+    Route::get('/empresas/create', [EmpresaController::class, 'create'])->name('empresas.create');
+    Route::post('/empresas/store', [EmpresaController::class, 'store'])->name('empresas.store');
+    Route::get('/empresas/{empresa}/edit', [EmpresaController::class, 'edit'])->name('empresas.edit');
+    Route::put('/empresas/{empresa}/update', [EmpresaController::class, 'update'])->name('empresas.update');
+    Route::delete('/empresas/{empresa}/delete', [EmpresaController::class, 'destroy'])->name('empresas.destroy');
+
 });

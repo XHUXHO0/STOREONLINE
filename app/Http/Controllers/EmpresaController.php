@@ -12,7 +12,7 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        //
+        return view('Empresas.Index');
     }
 
     /**
@@ -20,7 +20,7 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        //
+        return view('Empresas.Create');
     }
 
     /**
@@ -28,15 +28,18 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $empresa = new Empresa();
+        $empresa->create($request->input());
+
+        return redirect()->route('empresas.index');
     }
 
     /**
      * Display the specified resource.
      */
     public function show(Empresa $empresa)
-    {
-        //
+    {//dd($empresa);
+        return view('Empresas.Show', ['empresa' => $empresa]);
     }
 
     /**
@@ -44,7 +47,7 @@ class EmpresaController extends Controller
      */
     public function edit(Empresa $empresa)
     {
-        //
+        return view('Empresas.Edit', ['empresa' => $empresa]);
     }
 
     /**
@@ -52,7 +55,10 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, Empresa $empresa)
     {
-        //
+        $empresa->update($request->input());
+        $empresa->save();
+
+        return redirect()->route('empresas.index');
     }
 
     /**
@@ -60,6 +66,8 @@ class EmpresaController extends Controller
      */
     public function destroy(Empresa $empresa)
     {
-        //
+        $empresa->delete();
+
+        return redirect()->route('empresas.index');
     }
 }

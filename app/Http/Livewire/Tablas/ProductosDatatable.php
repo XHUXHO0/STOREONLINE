@@ -22,22 +22,20 @@ class ProductosDatatable extends DataTableComponent
         return [
             Column::make("Id", "id")
             ->sortable(),
-            ImageColumn::make('Foto Cliente')
+            ImageColumn::make('Foto')
             ->location(
                 fn ($row) => $row->uri_foto
             )
             ->attributes(fn ($row) => [
-                'class' => 'rounded-full w-20 h-20',
+                'class' => 'rounded-full w-auto h-auto ',
                 'alt' => $row->nombre.' Avatar',
             ]),
             Column::make("Categoria", "categoria.nombre")
-                ->sortable(),
-            Column::make("Direccion foto", "uri_foto")
-                ->sortable(),
+                ->sortable()->searchable(),
             Column::make("Marca", "marca")
-                ->sortable(),
+                ->sortable()->searchable(),
             Column::make("Titulo", "titulo")
-                    ->sortable(),
+                    ->sortable()->searchable(),
             Column::make("Stock", "stock")
                 ->sortable(),
             BooleanColumn::make('Activo', 'activo')
@@ -45,7 +43,8 @@ class ProductosDatatable extends DataTableComponent
             Column::make('Estado', 'estado.nombre')
                 ->sortable(),
             Column::make("Codigo", "codigo")
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
             Column::make("Precio", "precio")
                 ->sortable(),
             Column::make("Ganancia", "ganancia")
@@ -63,6 +62,8 @@ class ProductosDatatable extends DataTableComponent
             Column::make('Acciones ', 'id')->format(function ($row) {
                     return view('Productos.BotonesTabla', ['id' => $row]);
                 }),
+            Column::make("Direccion foto", "uri_foto")
+                ->sortable(),
         ];
     }
 }

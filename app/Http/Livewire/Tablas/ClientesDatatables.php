@@ -42,11 +42,12 @@ class ClientesDatatables extends DataTableComponent
                 ->sortable(),
             Column::make('Id sucursal', 'id_sucursal')
                 ->sortable(),
-            Column::make('Uri foto', 'uri_foto')
-                ->sortable(),
+            
             Column::make('Acciones ', 'id')->format(function ($row) {
                     return view('Clientes.BotonesTabla', ['id' => $row]);
             }),   
+            Column::make('Uri foto', 'uri_foto')
+                ->sortable(),
         ];
     }
 }
