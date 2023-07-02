@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sucursal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SucursalController extends Controller
 {
@@ -29,7 +30,11 @@ class SucursalController extends Controller
     public function store(Request $request)
     {
         $sucursal = new sucursal();
-        $sucursal->create($request->input());
+        $sucursal->id_empresa = Auth::user()->id_empresa;
+        $sucursal->title = $request->title;
+        $sucursal->direccion = $request->direccion;
+        $sucursal->descripccion = $request->descripccion;
+        $sucursal->save();
 
         return redirect()->route('sucursales.index');
     }
@@ -55,7 +60,9 @@ class SucursalController extends Controller
      */
     public function update(Request $request, sucursal $sucursal)
     {
+        
         $sucursal->update($request->input());
+        $sucursal->id_empresa = Auth::user()->id_empresa;
         $sucursal->save();
 
         return redirect()->route('sucursales.index');

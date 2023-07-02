@@ -21,6 +21,9 @@
                     <x-nav-link href="{{ route('sucursales.index') }}" :active="request()->routeIs('sucursales.index')">
                         {{ __('Sucursales') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('ventas.index') }}" :active="request()->routeIs('ventas.index')">
+                        {{ __('Ventas') }}
+                    </x-nav-link>
                     <x-nav-link href="{{ route('categorias.index') }}" :active="request()->routeIs('categorias.index')">
                         {{ __('Categorias') }}
                     </x-nav-link>
@@ -32,6 +35,9 @@
                     </x-nav-link>
                     <x-nav-link href="{{ route('clientes.index') }}" :active="request()->routeIs('clientes.index')">
                         {{ __('Clientes') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('gastos.index') }}" :active="request()->routeIs('gastos.index')">
+                        {{ __('Gastos') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -177,6 +183,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('clientes.index') }}" :active="request()->routeIs('clientes.index')">
                 {{ __('Clientes') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('empresas.index') }}" :active="request()->routeIs('empresas.index')">
+                {{ __('Ventas') }}
             </x-responsive-nav-link>
         </div>
 

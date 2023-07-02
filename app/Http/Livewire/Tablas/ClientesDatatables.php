@@ -3,13 +3,18 @@
 namespace App\Http\Livewire\Tablas;
 
 use App\Models\Cliente;
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 
 class ClientesDatatables extends DataTableComponent
 {
-    protected $model = Cliente::class;
+    public function builder(): Builder
+    {
+        return Cliente::where('id_sucursal', Auth::user()->id_sucursal);
+    }
 
     public function configure(): void
     {
@@ -40,9 +45,7 @@ class ClientesDatatables extends DataTableComponent
                 ->sortable(),
             Column::make('Email', 'email')
                 ->sortable(),
-            Column::make('Id sucursal', 'id_sucursal')
-                ->sortable(),
-            
+           
             Column::make('Acciones ', 'id')->format(function ($row) {
                     return view('Clientes.BotonesTabla', ['id' => $row]);
             }),   

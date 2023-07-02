@@ -4,7 +4,7 @@
       <label for="id_categoria" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoria</label>
       <select id="id_categoria" name="id_categoria" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
         @foreach ($categorias as $categoria)
-          <option value="{{ $categoria->id }}" {{ isset($categoria) && $producto->id_categoria == $categoria->id ? "selected" : "" }}>{{ $categoria->nombre }}&nbsp;{{ $categoria->descripcion }}</option> 
+          <option value="{{ $categoria->id }}" {{ isset($producto) && $producto->id_categoria == $categoria->id ? "selected" : "" }}>{{ $categoria->nombre }}&nbsp;{{ $categoria->descripcion }}</option> 
         @endforeach  
         {{-- selected="" --}}
       </select>
@@ -59,8 +59,8 @@
       <label for="ubicacion" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Ubicacion</label>
     </div> 
     <div class="relative z-0 w-full mb-6 group">
-      <input value="{{ $producto->tamaño_o_tipo ?? ''}}" type="text" id="tamaño_o_tipo" name="tamaño_o_tipo" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required>
-      <label for="tamaño_o_tipo" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tamaño o Tipo</label>
+      <input value="{{ $producto->tamano_o_tipo ?? ''}}" type="text" id="tamano_o_tipo" name="tamano_o_tipo" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required>
+      <label for="tamano_o_tipo" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tamaño o Tipo</label>
     </div> 
     <div class="relative z-0 w-full mb-6 group">
       <input value="{{ $producto->fecha_de_expiracion ?? ''}}" type="date" id="fecha_de_expiracion" name="fecha_de_expiracion" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required>

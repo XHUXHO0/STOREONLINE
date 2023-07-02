@@ -2,18 +2,17 @@
 
 namespace App\Http\Livewire\Tablas;
 
-use App\Models\Categoria;
+use App\Models\Gasto;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 
-class CategoriasDatatable extends DataTableComponent
+class GastosDatatable extends DataTableComponent
 {
-    // protected $model = Categoria::class;
     public function builder(): Builder
     {
-        return Categoria::where('id_sucursal', Auth::user()->id_sucursal);
+        return Gasto::where('id_sucursal', Auth::user()->id_sucursal);
     }
 
     public function configure(): void
@@ -26,12 +25,14 @@ class CategoriasDatatable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->sortable(),
-            Column::make("Nombre", "nombre")
+            Column::make("Titulo", "titulo")
+                ->sortable(),
+            Column::make("Monto", "monto")
                 ->sortable(),
             Column::make("Descripcion", "descripcion")
                 ->sortable(),
             Column::make('Acciones ', 'id')->format(function ($row) {
-                    return view('Categorias.BotonesTabla', ['id' => $row]);
+                    return view('Gastos.BotonesTabla', ['id' => $row]);
                 }),
         ];
     }

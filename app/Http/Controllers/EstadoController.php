@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Estado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EstadoController extends Controller
 {
@@ -28,8 +29,12 @@ class EstadoController extends Controller
      */
     public function store(Request $request)
     {
-        $categoria = new Estado();
-        $categoria->create($request->input());
+        
+        $estado = new Estado();
+        $estado->nombre=$request->nombre;
+        $estado->descripcion=$request->descripcion;
+        $estado->id_sucursal = Auth::user()->id_sucursal;
+        $estado->save();
 
         return redirect()->route('estados.index');
     }
@@ -57,6 +62,8 @@ class EstadoController extends Controller
     public function update(Request $request, Estado $estado)
     {
         $estado->update($request->input());
+        $estado->id_sucursal = Auth::user()->id_sucursal;
+        $estado->save();
 
         return redirect()->route('estados.index');
     }

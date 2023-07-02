@@ -28,8 +28,13 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
+        
         $empresa = new Empresa();
-        $empresa->create($request->input());
+        $empresa->title = $request->title;
+        $empresa->direccion = $request->direccion;
+        $empresa->razon_social = $request->razon_social;
+        $empresa->save();
+        
 
         return redirect()->route('empresas.index');
     }
@@ -55,6 +60,7 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, Empresa $empresa)
     {
+        
         $empresa->update($request->input());
         $empresa->save();
 

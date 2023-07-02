@@ -31,7 +31,13 @@ class ClienteController extends Controller
     {
         $cliente = new Cliente();
         $cliente->id_sucursal = Auth::user()->id_sucursal;
-        $cliente->create($request->input());
+        $cliente->nombre = $request->nombre;
+        $cliente->apellidos = $request->apellidos;
+        $cliente->direccion = $request->direccion;
+        $cliente->numero_telefonico = $request->numero_telefonico;
+        $cliente->email = $request->email;
+        $cliente->uri_foto = $request->uri_foto;
+        $cliente->save();
 
         return redirect()->route('clientes.index');
     }

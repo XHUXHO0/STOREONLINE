@@ -17,5 +17,10 @@ class EmpresasSeeder extends Seeder
             'direccion' => '19 Reforma Santa Ana Xalmimilulco, Huejotzingo, Puebla',
             'razon_social' => '',
         ]);
+        Empresa::create([
+            'title' => 'ejemplo',
+            'direccion' => 'ejemplo',
+            'razon_social' => '',
+        ]);
     }
 }

@@ -18,5 +18,11 @@ class SucursalesSeeder extends Seeder
             'descripccion' => 'productdos de jerceria',
             'id_empresa' => '1',
         ]);
+        Sucursal::create([
+            'title' => 'Matriz',
+            'direccion' => '19 Reforma Santa Ana Xalmimilulco, Huejotzingo, Puebla',
+            'descripccion' => 'productdos de jerceria',
+            'id_empresa' => '2',
+        ]);
     }
 }

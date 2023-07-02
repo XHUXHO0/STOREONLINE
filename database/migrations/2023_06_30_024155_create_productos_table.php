@@ -12,27 +12,29 @@ return new class() extends Migration {
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_user')->unsigned()->nullable();
-            $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade');
+            $table->unsignedBigInteger('id_empresa')->nullable();
+            $table->unsignedBigInteger('id_sucursal')->nullable();
+            $table->bigInteger('id_vendedor')->unsigned()->nullable();
+            $table->unsignedBigInteger('id_categoria')->nullable();
             $table->string('uri_foto')->nullable();
             $table->string('marca')->nullable();
             $table->string('titulo')->nullable();
             $table->integer('stock')->nullable();
             $table->unsignedBigInteger('id_estado')->nullable();
-            $table->foreign('id_estado')->on('estados')->references('id');
             $table->boolean('activo')->nullable();
             $table->string('codigo')->nullable();
             $table->double('precio', 10, 2)->nullable();
             $table->double('ganancia')->nullable();
             $table->string('ubicacion')->nullable();
-            $table->string('tamaño_o_tipo')->nullable();
+            $table->string('tamano_o_tipo')->nullable();
             $table->string('fecha_de_expiracion')->nullable();
             $table->string('tipo_de_meditas')->nullable();
-            $table->unsignedBigInteger('id_sucursal')->nullable();
-            $table->foreign('id_sucursal')->on('sucursals')->references('id');
-            $table->unsignedBigInteger('id_categoria')->nullable();
-            $table->foreign('id_categoria')->on('categorias')->references('id');
             $table->timestamps();
+            $table->foreign('id_empresa')->on('empresas')->references('id');
+            $table->foreign('id_sucursal')->on('sucursals')->references('id');
+            $table->foreign('id_vendedor')->references('id')->on('users');
+            $table->foreign('id_categoria')->on('categorias')->references('id');
+            $table->foreign('id_estado')->on('estados')->references('id');
         });
     }
 

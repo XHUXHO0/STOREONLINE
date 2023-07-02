@@ -11,28 +11,39 @@ class Producto extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_user',
+        'id_empresa',
+        'id_sucursal',
+        'id_vendedor',
+        'id_categoria',
         'uri_foto',
         'marca',
         'titulo',
         'stock',
-        'activo',
         'id_estado',
+        'activo',
         'codigo',
         'precio',
         'ganancia',
-        'tamaño_o_tipo',
-        'fecha_de_expiracion',
         'ubicacion',
-        'tipo_de_meditas',
-        'id_categoria',
+        'tamano_o_tipo',
+        'fecha_de_expiracion',
+        'tipo_de_meditas'
     ];
+
+    public function sucursal()
+    {
+        return $this->hasOne(sucursal::class, 'id', 'id_sucursal');
+    }
+
+    public function vendedor()
+    {
+        return $this->hasOne(User::class, 'id', 'id_vendedor');
+    }
 
     public function categoria()
     {
         return $this->hasOne(Categoria::class, 'id', 'id_categoria');
     }
-
     public function estado()
     {
         return $this->hasOne(Estado::class, 'id', 'id_estado');

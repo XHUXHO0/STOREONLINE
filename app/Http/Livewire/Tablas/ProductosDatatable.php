@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Tablas;
 
 use App\Models\Producto;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
@@ -10,8 +12,11 @@ use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
 
 class ProductosDatatable extends DataTableComponent
 {
-    protected $model = Producto::class;
 
+    public function builder(): Builder
+    {
+        return Producto::where('id_empresa','=', Auth::user()->id_empresa);
+    }
     public function configure(): void
     {
         $this->setPrimaryKey('id');
@@ -49,7 +54,7 @@ class ProductosDatatable extends DataTableComponent
                 ->sortable(),
             Column::make("Ganancia", "ganancia")
                 ->sortable(),
-            Column::make("Tamaño o tipo", "tamaño_o_tipo")
+            Column::make("Tamaño o tipo", "tamano_o_tipo")
                 ->sortable(),
             Column::make("Fecha de expiracion", "fecha_de_expiracion")
                 ->sortable(),

@@ -2,13 +2,18 @@
 
 namespace App\Http\Livewire\Tablas;
 
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
-use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Estado;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
+use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
 
 class EstadosDatatable extends DataTableComponent
 {
-    protected $model = Estado::class;
+    public function builder(): Builder
+    {
+        return Estado::where('id_sucursal', Auth::user()->id_sucursal);
+    }
 
     public function configure(): void
     {

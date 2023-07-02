@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriaController extends Controller
 {
@@ -29,7 +30,10 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $categoria = new Categoria();
-        $categoria->create($request->input());
+        $categoria->id_sucursal = Auth::user()->id_sucursal;
+        $categoria->nombre=$request->nombre;
+        $categoria->descripcion=$request->descripcion;
+        $categoria->save();
 
         return redirect()->route('categorias.index');
     }
@@ -56,7 +60,8 @@ class CategoriaController extends Controller
     public function update(Request $request, Categoria $categoria)
     {
         $categoria->update($request->input());
-        // $categoria->save();
+        $categoria->id_sucursal = Auth::user()->id_sucursal;
+        $categoria->save();
 
         return redirect()->route('categorias.index');
     }

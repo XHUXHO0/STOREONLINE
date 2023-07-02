@@ -2,13 +2,18 @@
 
 namespace App\Http\Livewire\Tablas;
 
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
-use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Venta;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
+use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
 
-class VentasDatatables extends DataTableComponent
+class VentasDatatable extends DataTableComponent
 {
-    protected $model = Venta::class;
+    public function builder(): Builder
+    {
+        return Venta::where('id_sucursal', Auth::user()->id_sucursal);
+    }
 
     public function configure(): void
     {
@@ -22,12 +27,6 @@ class VentasDatatables extends DataTableComponent
                 ->sortable(),
             Column::make("Id vendedor", "id_vendedor")
                 ->sortable(),
-            Column::make("Id vendedor", "id_vendedor")
-                ->sortable(),
-            Column::make("Id sucursal", "id_sucursal")
-                ->sortable(),
-            Column::make("Id sucursal", "id_sucursal")
-                ->sortable(),
             Column::make("Monto", "monto")
                 ->sortable(),
             Column::make("Ganancia", "ganancia")
@@ -36,14 +35,11 @@ class VentasDatatables extends DataTableComponent
                 ->sortable(),
             Column::make("Id estatus venta", "id_estatus_venta")
                 ->sortable(),
-            Column::make("Id estatus venta", "id_estatus_venta")
-                ->sortable(),
             Column::make("Codigo referencia", "codigo_referencia")
                 ->sortable(),
-            Column::make("Created at", "created_at")
-                ->sortable(),
-            Column::make("Updated at", "updated_at")
-                ->sortable(),
+            Column::make('Acciones ', 'id')->format(function ($row) {
+                    return view('Ventas.BotonesTabla', ['id' => $row]);
+            }),
         ];
     }
 }

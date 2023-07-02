@@ -11,5 +11,6 @@ class Categoria extends Model
     protected $fillable = [
         'nombre',
         'descripcion',
+        'id_sucursal'
     ];
 }
