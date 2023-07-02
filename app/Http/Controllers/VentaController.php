@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Venta;
+use App\Models\Estado_venta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,14 +18,7 @@ class VentaController extends Controller
         return view('Ventas.Index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('Ventas.Create');
-    }
-
+ 
     /**
      * Store a newly created resource in storage.
      */
@@ -43,7 +38,9 @@ class VentaController extends Controller
      */
     public function show(venta $venta)
     {
-        return view('Ventas.Show', ['venta' => $venta]);
+        $estatus_ventas = Estado_venta::all();
+        $vendedores = User::where('id_empresa', Auth::user()->id_empresa)->where('id_sucursal', Auth::user()->id_sucursal)->get();
+        return view('Ventas.Show', ['venta' => $venta,'estatus_ventas'=>$estatus_ventas,'vendedores'=>$vendedores]);
     }
 
     /**
@@ -51,7 +48,9 @@ class VentaController extends Controller
      */
     public function edit(venta $venta)
     {
-        return view('Ventas.Edit', ['venta' => $venta]);
+        $estatus_ventas = Estado_venta::all();
+        $vendedores = User::where('id_empresa', Auth::user()->id_empresa)->where('id_sucursal', Auth::user()->id_sucursal)->get();
+        return view('Ventas.Edit', ['venta' => $venta,'estatus_ventas'=>$estatus_ventas,'vendedores'=>$vendedores]);
     }
 
     /**
