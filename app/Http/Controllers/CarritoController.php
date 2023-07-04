@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrito;
+use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CarritoController extends Controller
 {
@@ -12,7 +14,9 @@ class CarritoController extends Controller
      */
     public function index()
     {
-        return view('Carritos.shopping');
+        $productos = Producto::where('id_sucursal', Auth::user()->id_sucursal)->get();
+
+        return view('Carritos.shopping', ['productos' => $productos]);
     }
 
     /**

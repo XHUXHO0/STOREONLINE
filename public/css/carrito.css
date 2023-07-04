@@ -64,6 +64,12 @@ header h1{
     font-weight: bold;
     font-size: 22px;
 }
+.contenedor .contenedor-items .item .codigo-item{
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+}
 
 .contenedor .contenedor-items .item .boton-item{
     display: block;
@@ -137,6 +143,12 @@ header h1{
     cursor: pointer;
 }
 .carrito .carrito-item .carrito-item-precio{
+    font-weight: bold;
+    display: inline-block;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.carrito .carrito-item .carrito-item-codigo{
     font-weight: bold;
     display: inline-block;
     font-size: 18px;

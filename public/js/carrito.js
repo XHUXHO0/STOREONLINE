@@ -55,12 +55,14 @@ function pagarClicked(){
 function agregarAlCarritoClicked(event){
     var button = event.target;
     var item = button.parentElement;
+    var id = item.getElementsByClassName('id-item')[0].innerText;
     var titulo = item.getElementsByClassName('titulo-item')[0].innerText;
     var precio = item.getElementsByClassName('precio-item')[0].innerText;
+    var codigo = item.getElementsByClassName('codigo-item')[0].innerText;
     var imagenSrc = item.getElementsByClassName('img-item')[0].src;
     console.log(imagenSrc);
 
-    agregarItemAlCarrito(titulo, precio, imagenSrc);
+    agregarItemAlCarrito(id,titulo, precio, codigo, imagenSrc);
 
     hacerVisibleCarrito();
 }
@@ -77,7 +79,7 @@ function hacerVisibleCarrito(){
 }
 
 //Funciòn que agrega un item al carrito
-function agregarItemAlCarrito(titulo, precio, imagenSrc){
+function agregarItemAlCarrito(id,titulo, precio, codigo, imagenSrc){
     var item = document.createElement('div');
     item.classList.add = ('item');
     var itemsCarrito = document.getElementsByClassName('carrito-items')[0];
@@ -95,7 +97,9 @@ function agregarItemAlCarrito(titulo, precio, imagenSrc){
         <div class="carrito-item">
             <img src="${imagenSrc}" width="80px" alt="">
             <div class="carrito-item-detalles">
+                <span class="carrito-item-titulo">${id}</span>
                 <span class="carrito-item-titulo">${titulo}</span>
+                <span class="carrito-item-codigo">${codigo}</span>
                 <div class="selector-cantidad">
                     <i class="fa-solid fa-minus restar-cantidad"></i>
                     <input type="text" value="1" class="carrito-item-cantidad" disabled>
