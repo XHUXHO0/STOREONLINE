@@ -30,7 +30,7 @@ class GastoController extends Controller
     public function store(Request $request)
     {
         $gasto = new Gasto();
-        $gasto->id_vendedor = Auth::user()->id;
+        $gasto->id_usuario = Auth::user()->id;
         $gasto->id_sucursal = Auth::user()->id_sucursal;
         $gasto->titulo = $request->titulo;
         $gasto->monto = $request->monto;
@@ -62,7 +62,7 @@ class GastoController extends Controller
     public function update(Request $request, Gasto $Gasto)
     {
         $Gasto->update($request->input());
-        $Gasto->id_vendedor = Auth::user()->id;
+        $Gasto->id_usuario = Auth::user()->id;
         $Gasto->id_sucursal = Auth::user()->id_sucursal;
         $Gasto->save();
 

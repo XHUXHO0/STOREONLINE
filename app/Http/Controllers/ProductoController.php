@@ -39,7 +39,7 @@ class ProductoController extends Controller
         $producto = new Producto();
         $producto->id_empresa = Auth::user()->id_empresa;
         $producto->id_sucursal = Auth::user()->id_sucursal;
-        $producto->id_vendedor = Auth::user()->id;
+        $producto->id_usuario = Auth::user()->id;
         $producto->id_categoria = $request->id_categoria;
         $producto->uri_foto = $request->uri_foto;
         $producto->marca = $request->marca;
@@ -90,7 +90,7 @@ class ProductoController extends Controller
         $producto->update($request->all());
         $producto->id_empresa = Auth::user()->id_empresa;
         $producto->id_sucursal = Auth::user()->id_sucursal;
-        $producto->id_vendedor = Auth::user()->id;
+        $producto->id_usuario = Auth::user()->id;
         $producto->save();
 
         return redirect()->route('productos.index');

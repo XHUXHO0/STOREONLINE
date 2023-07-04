@@ -13,7 +13,7 @@ class Producto extends Model
     protected $fillable = [
         'id_empresa',
         'id_sucursal',
-        'id_vendedor',
+        'id_usuario',
         'id_categoria',
         'uri_foto',
         'marca',
@@ -37,7 +37,7 @@ class Producto extends Model
 
     public function vendedor()
     {
-        return $this->hasOne(User::class, 'id', 'id_vendedor');
+        return $this->hasOne(User::class, 'id', 'id_usuario');
     }
 
     public function categoria()

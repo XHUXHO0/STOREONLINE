@@ -10,7 +10,7 @@
     </a>
 
     <div class="flex-1 px-4 mt-2 space-y-2 overflow-hidden hover:overflow-auto">
-        <x-responsive-sidebar-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+        <x-responsive-sidebar-link href="{{ route('carritos.index') }}" :active="request()->routeIs('carritos.index')">
             <span class="p-2 bg-opacity-50 dark:fron-blue-500 to-blue-50 bg-blue-200 dark:w-3 dark:h-8 rounded-l-lg focus:bg-black">
                 <i class="fa-solid fa-cart-shopping"></i>
             </span>

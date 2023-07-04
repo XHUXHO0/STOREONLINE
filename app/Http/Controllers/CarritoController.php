@@ -12,7 +12,7 @@ class CarritoController extends Controller
      */
     public function index()
     {
-        //
+        return view('Carritos.shopping');
     }
 
     /**
@@ -20,7 +20,6 @@ class CarritoController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -28,7 +27,6 @@ class CarritoController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -36,7 +34,6 @@ class CarritoController extends Controller
      */
     public function show(Carrito $carrito)
     {
-        //
     }
 
     /**
@@ -44,7 +41,6 @@ class CarritoController extends Controller
      */
     public function edit(Carrito $carrito)
     {
-        //
     }
 
     /**
@@ -52,7 +48,6 @@ class CarritoController extends Controller
      */
     public function update(Request $request, Carrito $carrito)
     {
-        //
     }
 
     /**
@@ -60,6 +55,5 @@ class CarritoController extends Controller
      */
     public function destroy(Carrito $carrito)
     {
-        //
     }
 }

@@ -14,7 +14,7 @@ return new class() extends Migration {
             $table->id();
             $table->unsignedBigInteger('id_empresa')->nullable();
             $table->unsignedBigInteger('id_sucursal')->nullable();
-            $table->bigInteger('id_vendedor')->unsigned()->nullable();
+            $table->bigInteger('id_usuario')->unsigned()->nullable();
             $table->unsignedBigInteger('id_categoria')->nullable();
             $table->string('uri_foto')->nullable();
             $table->string('marca')->nullable();
@@ -32,7 +32,7 @@ return new class() extends Migration {
             $table->timestamps();
             $table->foreign('id_empresa')->on('empresas')->references('id');
             $table->foreign('id_sucursal')->on('sucursals')->references('id');
-            $table->foreign('id_vendedor')->references('id')->on('users');
+            $table->foreign('id_usuario')->references('id')->on('users');
             $table->foreign('id_categoria')->on('categorias')->references('id');
             $table->foreign('id_estado')->on('estados')->references('id');
         });

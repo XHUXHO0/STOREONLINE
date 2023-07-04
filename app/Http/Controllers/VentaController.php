@@ -26,7 +26,7 @@ class VentaController extends Controller
     {
         $venta = new venta();
         $venta->create($request->input());
-        $venta->id_vendedor = Auth::user()->id;
+        $venta->id_usuario = Auth::user()->id;
         $venta->id_sucursal = Auth::user()->id_sucursal;
         $venta->save();
 
@@ -59,7 +59,7 @@ class VentaController extends Controller
     public function update(Request $request, venta $venta)
     {
         $venta->update($request->input());
-        $venta->id_vendedor = Auth::user()->id;
+        $venta->id_usuario = Auth::user()->id;
         $venta->id_sucursal = Auth::user()->id_sucursal;
         $venta->save();
 

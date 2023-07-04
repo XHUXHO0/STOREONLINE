@@ -13,7 +13,7 @@ class Gasto extends Model
         'titulo',
         'monto',
         'descripcion',
-        'id_vendedor',
+        'id_usuario',
         'id_sucursal'
     ];
 }

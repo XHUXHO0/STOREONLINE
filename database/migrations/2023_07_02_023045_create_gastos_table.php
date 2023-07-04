@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('descripcion')->nullable();
             $table->unsignedBigInteger('id_sucursal')->nullable();
             $table->foreign('id_sucursal')->on('sucursals')->references('id');
-            $table->bigInteger('id_vendedor')->unsigned()->nullable();
-            $table->foreign('id_vendedor')->references('id')->on('users')->onUpdate('cascade');
+            $table->bigInteger('id_usuario')->unsigned()->nullable();
+            $table->foreign('id_usuario')->references('id')->on('users')->onUpdate('cascade');
             $table->timestamps();
         });
     }

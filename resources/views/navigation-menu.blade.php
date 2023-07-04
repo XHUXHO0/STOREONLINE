@@ -11,11 +11,109 @@
                 </div>
                 <h4 class="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 uppercase">{{ Auth::user()->empresa->title }}</h4>
             </div>
-            <div class="flex">
+            <div class="flex items-center">
+                <!-- Dropdown toggle button -->
+                
+                
+                <div x-data="{ isOpen: false }" class="relative inline-block">
+                    <!-- Carrito -->
+                    <button @click="isOpen = !isOpen" class="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md dark:text-white focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:bg-gray-800 focus:outline-none">
+                        <i class="fa-solid fa-cart-shopping"></i>&nbsp;({{ Auth::user()->carrito() }})
+                    </button> 
+                    <!-- Dropdown menu -->
+                    <div x-show="isOpen" 
+                        @click.away="isOpen = false"
+                        x-transition:enter="transition ease-out duration-100"
+                        x-transition:enter-start="opacity-0 scale-90"
+                        x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 scale-100"
+                        x-transition:leave-end="opacity-0 scale-90" 
+                        class="absolute right-0 z-20 w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl dark:bg-gray-800"
+                    >
+                    @foreach (Auth::user()->carritoItems() as $carrito)
+                    <a href=""></a>    
+                        <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize 
+                        transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100
+                         dark:hover:bg-gray-700 dark:hover:text-white"><i class="fa-solid fa-cart-shopping"></i>
+                          Sign Out {{ $carrito->items }}
+                        </a>
+                    @endforeach
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {{-- <div class="max-w-lg mx-auto">
+                    <button  class="bg-transparent hover:bg-blue-500 
+                    text-blue-700 font-semibold hover:text-white py-2 
+                    px-4 border border-blue-500 hover:border-transparent
+                     rounded h-10 w-auto flex justify-center items-center" 
+                    type="button"
+                    data-dropdown-toggle="carrito"> 
+                        
+                    </button>
+                    <!-- Carrito menu -->
+                    <div class="flex z-50" id="carrito">
+                        <div class="flex justify-center flex-col items-center">
+                           
+                        </div>
+                    </div>
+                </div> --}}
                 <!-- Nombre -->
                 <div class="hidden md:flex items-center shrink-0">
-                    <h4 class="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 uppercase">{{ Auth::user()->nombre }}&nbsp;{{ Auth::user()->apellido_paterno }}&nbsp;{{ Auth::user()->apellido_materno }}</h4>
+                    <a href="{{ route('profile.show') }}">
+                        <h4 class="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 uppercase">{{ Auth::user()->nombre }}&nbsp;{{ Auth::user()->apellido_paterno }}&nbsp;{{ Auth::user()->apellido_materno }}</h4>
+                    </a>
                 </div>
+
+               
+                
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
             </div>
 
             <!-- Hamburger -->
@@ -33,7 +131,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link href="{{ route('carritos.index') }}" :active="request()->routeIs('carritos.index')">
                 <i class="fa-solid fa-cart-shopping"></i>&nbsp;{{ __('Carrito') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">

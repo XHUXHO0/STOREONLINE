@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -70,5 +72,33 @@ class User extends Authenticatable
     public function sucursal()
     {
         return $this->hasOne(sucursal::class, 'id', 'id_sucursal');
+    }
+
+    public function carrito()
+    {
+        $carritos = [];
+        $ventas = Venta::where('id_sucursal', Auth::user()->id_sucursal)->get();
+        foreach ($ventas as $venta) {
+            if (Carbon::parse($venta->created_at)->format('Y-m-d') == Carbon::now()->format('Y-m-d')) {
+                array_push($carritos, $venta);
+            }
+        }
+
+        // return Carbon::now()->format('Y-m-d');
+
+        return count($carritos);
+    }
+
+    public function carritoItems()
+    {
+        $carritosItems = [];
+        $ventas = Venta::where('id_sucursal', Auth::user()->id_sucursal)->get();
+        foreach ($ventas as $venta) {
+            if (Carbon::parse($venta->created_at)->format('Y-m-d') == Carbon::now()->format('Y-m-d')) {
+                array_push($carritosItems, $venta);
+            }
+        }
+
+        return $carritosItems;
     }
 }

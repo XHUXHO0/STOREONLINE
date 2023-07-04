@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -70,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Mexico_City',
 
     /*
     |--------------------------------------------------------------------------
@@ -123,6 +122,7 @@ return [
     */
 
     'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', base64_decode('ISs1Wnt23A1ayYRGKxrROE9XUkVwHRmh4lDaRlevM9U=')),
 
     'cipher' => 'AES-256-CBC',
 
@@ -186,5 +186,4 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
-
 ];
