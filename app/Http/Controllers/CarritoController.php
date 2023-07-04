@@ -24,6 +24,9 @@ class CarritoController extends Controller
      */
     public function create()
     {
+        $productos = Producto::where('id_sucursal', Auth::user()->id_sucursal)->get();
+
+        return view('Carritos.shoppingTailwind', ['productos' => $productos]);
     }
 
     /**
